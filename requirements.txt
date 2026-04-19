@@ -1,0 +1,3 @@
+pyperclip>=1.8.2
+openai>=1.0.0
+accessible_output2>=0.17
