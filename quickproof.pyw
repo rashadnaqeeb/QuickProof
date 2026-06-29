@@ -26,6 +26,7 @@ SYSTEM_PROMPT = (
 # Windows constants
 WM_HOTKEY = 0x0312
 MOD_CONTROL = 0x0002
+MOD_SHIFT = 0x0004
 MOD_NOREPEAT = 0x4000
 VK_OEM_2 = 0xBF        # '/' key
 VK_CONTROL = 0x11
@@ -178,8 +179,8 @@ def main():
     if not OPENROUTER_API_KEY:
         return
 
-    # Register Ctrl+/ as a global hotkey (suppresses the key from other apps)
-    if not user32.RegisterHotKey(None, HOTKEY_ID, MOD_CONTROL | MOD_NOREPEAT, VK_OEM_2):
+    # Register Ctrl+Shift+/ as a global hotkey (suppresses the key from other apps)
+    if not user32.RegisterHotKey(None, HOTKEY_ID, MOD_CONTROL | MOD_SHIFT | MOD_NOREPEAT, VK_OEM_2):
         return
 
     msg = ctypes.wintypes.MSG()

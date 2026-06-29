@@ -1,6 +1,6 @@
 # QuickProof
 
-QuickProof is a small Windows app that fixes spelling, extra spacing, and capitalisation mistakes in your writing. It deliberately leaves your grammar and phrasing alone. It runs silently in the background. When you press **Ctrl + /**, it grabs the text you're writing, fixes any errors, and puts the corrected text back. It works in any app - email, chat, browser, notepad, anything with a text field.
+QuickProof is a small Windows app that fixes spelling, extra spacing, and capitalisation mistakes in your writing. It deliberately leaves your grammar and phrasing alone. It runs silently in the background. When you press **Ctrl + Shift + /**, it grabs the text you're writing, fixes any errors, and puts the corrected text back. It works in any app - email, chat, browser, notepad, anything with a text field.
 
 ## Step 1: Install Python
 
@@ -71,7 +71,7 @@ Wait for it to finish. It will output messages about packages being downloaded a
 
 Double-click the **quickproof.pyw** file. No window will open - that's normal. It's running silently in the background.
 
-Now click into any text field and type something. Press **Ctrl + /** and wait a moment. You'll hear a high-pitched beep when the correction is done.
+Now click into any text field and type something. Press **Ctrl + Shift + /** and wait a moment. You'll hear a high-pitched beep when the correction is done.
 
 - **High beep** - text was corrected successfully
 - **Low beep** - something went wrong, or there was no text to check
