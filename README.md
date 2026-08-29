@@ -86,6 +86,20 @@ So you don't have to run QuickProof manually every time you restart your compute
 
 QuickProof will now start automatically whenever you log in to Windows. It may take a minute or so after login before it's ready.
 
+## Windows on ARM
+
+If your PC runs Windows on ARM (a Snapdragon laptop, or a Windows VM on an Apple Silicon Mac) and you installed the ARM64 build of Python, QuickProof will silently fail to start. The speech library it uses ships only x64 DLLs, which an ARM64 Python cannot load.
+
+After Step 4, run this once from the QuickProof folder:
+
+```
+python fix_arm64.py
+```
+
+It downloads the official ARM64 NVDA controller client from NV Access, installs it into the speech library, and patches the library so screen readers that have no ARM64 support are skipped instead of crashing. Then carry on with Step 5.
+
+Run it again if you ever upgrade the `accessible_output2` package, because the upgrade will undo the fix.
+
 ## Stopping QuickProof
 
 If you ever need to stop it, press **Ctrl + Shift + Esc** to open Task Manager, find **pythonw.exe**, and end the task.
