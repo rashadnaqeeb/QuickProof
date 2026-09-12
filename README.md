@@ -126,8 +126,8 @@ The hotkey is **fn + /**.
 
 QuickProof never speaks. It only plays a sound.
 
-- **Glass sound**: the text was replaced, or it was already correct.
-- **Basso sound**: nothing was replaced. The log says why: no text found, text too long, correction failed, or the text field changed while waiting.
+- **Breeze sound** (the file is called Blow): the text was replaced, or it was already correct.
+- **Boop sound** (the file is called Basso): nothing was replaced. The log says why: no text found, text too long, correction failed, or the text field changed while waiting.
 
 ### Checking and troubleshooting
 

@@ -14,7 +14,7 @@ How it works:
   4. Writes the corrected text straight into native text fields. Web-based
      editors (Discord, Slack, browsers, Mail) get Cmd+A, Cmd+V instead, with
      your clipboard saved and restored around it.
-  5. Plays a sound: Glass for success, Basso for failure. The reason is in the log.
+  5. Plays a sound: Blow (Breeze) for success, Basso (Boop) for failure. The reason is in the log.
 
 Extra modes:
   quickproof_mac.py --check          report permissions and configuration
@@ -57,7 +57,7 @@ HOME = Path.home()
 KEY_FILE = HOME / ".config" / "quickproof" / "api_key"
 LOG_FILE = HOME / "Library" / "Logs" / "QuickProof.log"
 LOCK_FILE = HOME / ".local" / "share" / "quickproof" / "lock"
-SOUND_OK = "/System/Library/Sounds/Glass.aiff"
+SOUND_OK = "/System/Library/Sounds/Blow.aiff"   # shown as Breeze in System Settings
 SOUND_FAIL = "/System/Library/Sounds/Basso.aiff"
 
 MAX_CHARS = 10000          # refuse anything bigger, so a stray focus in a terminal or document is harmless
