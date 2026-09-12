@@ -1,6 +1,6 @@
 # QuickProof
 
-QuickProof is a small Windows app that fixes spelling, extra spacing, and capitalisation mistakes in your writing. It deliberately leaves your grammar and phrasing alone. It runs silently in the background. When you press **Ctrl + Shift + /**, it grabs the text you're writing, fixes any errors, and puts the corrected text back. It works in any app - email, chat, browser, notepad, anything with a text field.
+QuickProof is a small app that fixes spelling, extra spacing, capitalisation mistakes, and accidentally doubled punctuation in your writing. It deliberately leaves your grammar and phrasing alone and never adds punctuation of its own. It runs silently in the background. When you press **Ctrl + Shift + /**, it grabs the text you're writing, fixes any errors, and puts the corrected text back. It works in any app - email, chat, browser, notepad, anything with a text field.
 
 ## Step 1: Install Python
 
@@ -103,3 +103,39 @@ Run it again if you ever upgrade the `accessible_output2` package, because the u
 ## Stopping QuickProof
 
 If you ever need to stop it, press **Ctrl + Shift + Esc** to open Task Manager, find **pythonw.exe**, and end the task.
+
+## Mac
+
+The Mac version is `quickproof_mac.py`. It does the same job, but works differently under the hood: it reads the focused text field through the macOS Accessibility API, so it never has to select or cut your text. Native apps get the corrected text written straight back into the field. Web-based apps such as Discord, Slack, browsers, and Mail's composer are updated with a paste, with your clipboard saved and restored around it. If you leave the text field or keep typing while it is waiting for the correction, nothing is replaced.
+
+The hotkey is **fn + /**.
+
+### What you need
+
+- Python 3 (Homebrew's is fine).
+- Karabiner-Elements, installed and running. It provides the hotkey.
+- An OpenRouter API key, as in Step 2 above.
+
+### Setup
+
+1. Open Terminal and go to the QuickProof folder, for example `cd ~/Documents/QuickProof`
+2. Run `bash setup_mac.sh`. It creates a private Python environment, asks for your API key if it is not already in the `OPENROUTER_API_KEY` environment variable, adds the fn + / rule to Karabiner-Elements, and runs a test correction so you know the key works.
+3. Click into any text field and press fn + /. The first time, macOS shows an Accessibility permission dialog. Open System Settings, Privacy and Security, Accessibility, and turn on the item it names, expected to be `karabiner_console_user_server`. Press fn + / again.
+
+### Sounds
+
+QuickProof never speaks. It only plays a sound.
+
+- **Glass sound**: the text was replaced, or it was already correct.
+- **Basso sound**: nothing was replaced. The log says why: no text found, text too long, correction failed, or the text field changed while waiting.
+
+### Checking and troubleshooting
+
+- `~/.local/share/quickproof/venv/bin/python3 quickproof_mac.py --check` reports whether the key and permissions are in place.
+- `~/.local/share/quickproof/venv/bin/python3 quickproof_mac.py --test "some txet"` corrects the given text and prints it, without touching any app.
+- Every press writes a line to `~/Library/Logs/QuickProof.log` saying which app it saw and which path it took.
+- Your API key lives in `~/.config/quickproof/api_key`. Karabiner does not pass your shell's environment variables to the script, which is why it is stored in a file.
+
+### Removing
+
+Open Karabiner-Elements, go to Complex Modifications, and remove the QuickProof rule. Then delete `~/.local/share/quickproof` and `~/.config/quickproof`.
